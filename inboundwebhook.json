@@ -1,0 +1,44 @@
+{
+    "name" : "inboundwebhook",
+    "author" : "z1p",
+    "version" : 0.1,
+    "categories" : ["automation"],
+    "description" : "Creates an external URL which can be used to trigger a flow.",
+    "icon" : null,
+    "requirements" : {
+        "jimi_min_version" : null,
+        "jimi_max_version" : null,
+        "plugins" : []
+    },
+    "collections" : {
+
+    },
+    "triggers" : {
+        "inboundwebhook" : {
+            "display_name" : "inboundwebhook",
+            "className" : "_inboundwebhook",
+            "class_location" : "models.trigger",
+            "description" : "Trigger called from an inbound webhook.",
+            "fields" : [
+                { "schema_item" : "token", "schema_value" : "token", "type" : "input", "label" : "token", "description" : "jimi secure token.", "required" : true, "jimi_syntax" : false },
+                { "schema_item" : "authenticated", "schema_value" : "authenticated", "type" : "checkbox", "label" : "authenticated", "description" : "Does the webhook require jimi authentication.", "required" : true, "jimi_syntax" : false },
+                { "schema_item" : "customEvents", "schema_value" : "customEvents", "type" : "json-input", "label" : "customEvents", "description" : "User defined events to be used when triggered.", "required" : false, "jimi_syntax" : false }        
+            ],
+            "data_out" : {
+                "event" : { 
+                    "description" : "Event made up of either POST data or the defined custom events if GET is used.",
+                    "type" : "json",
+                    "always_present" : true,
+                    "values" : {
+                    }
+                }
+            }
+        }
+    },
+    "actions" : {
+        
+    },
+    "settings" : {
+
+    }
+}
