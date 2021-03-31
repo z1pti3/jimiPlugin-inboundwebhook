@@ -12,7 +12,7 @@ import jimi
 
 pluginPages = Blueprint('inboundwebhookPages', __name__)
 
-@pluginPages.route("/inboundwebhookpublic/<token>/",methods=["GET","POST"])
+@pluginPages.route("/public/<token>/",methods=["GET","POST"])
 def __PUBLIC__inboundwebhook(token):
     webhook = trigger._inboundwebhook().getAsClass(query={ "token" : token })[0]
     if webhook.enabled and webhook.authenticated == False:
@@ -27,7 +27,7 @@ def __PUBLIC__inboundwebhook(token):
         return { }, 200
     return { }, 404
 
-@pluginPages.route("/inboundwebhook/<token>/",methods=["GET","POST"])
+@pluginPages.route("/<token>/",methods=["GET","POST"])
 def inboundwebhook(token):
     webhook = trigger._inboundwebhook().getAsClass(sessionData=jimi.api.g.sessionData,query={ "token" : token })[0]
     if webhook.enabled and webhook.authenticated == True:
